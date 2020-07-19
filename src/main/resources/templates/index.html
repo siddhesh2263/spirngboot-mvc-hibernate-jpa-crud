@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Manager</title>
+</head>
+<body>
+<div align="center">
+	<h1>Product Manager</h1>
+	<a href="new">Add new product</a>
+	<br><br>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>Product ID</th>
+				<th>Product Name</th>
+				<th>Product Brand</th>
+				<th>Product Made In</th>
+				<th>Product Price</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product : ${products}">
+				<td th:text="${product.id}">Product ID</td>
+				<td th:text="${product.product_name}">Product Name</td>
+				<td th:text="${product.brand}">Product Brand</td>
+				<td th:text="${product.madeIn}">Product Made In</td>
+				<td th:text="${product.price}">Product Price</td>
+				<td>
+					<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+					&nbsp;
+					<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
